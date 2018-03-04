@@ -146,6 +146,11 @@ void MainWindow::switchLight(int light)
         switchLight(ui.light3, lights_status[3]);
         break;
     }
+
+    if(light == -1)
+        qnode.informStatus(65535, true);
+    else
+        qnode.informStatus(light, lights_status[light]);
 }
 
 void MainWindow::switchLight(QLabel *light, bool sw)

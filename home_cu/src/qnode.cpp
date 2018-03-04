@@ -50,6 +50,7 @@ bool QNode::init() {
 	ros::NodeHandle n;
 	// Add your ros communications here.
     lights_subscriber = n.subscribe<std_msgs::Int32>("lights", 1000, &QNode::switchLight, this);
+    chatter_publisher = n.advertise<std_msgs::Int32>("lights_status", 1000);
 	start();
 	return true;
 }
@@ -66,6 +67,7 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
 	ros::NodeHandle n;
 	// Add your ros communications here.
     lights_subscriber = n.subscribe<std_msgs::Int32>("lights", 1000, &QNode::switchLight, this);
+    chatter_publisher = n.advertise<std_msgs::Int32>("lights_status", 1000);
 	start();
 	return true;
 }
@@ -122,6 +124,17 @@ void QNode::switchLight(const std_msgs::Int32::ConstPtr &msg)
 
     std::stringstream ss;
     ss << "I heard: switch light " << msg.get()->data;
+    log(Info, ss.str());
+}
+
+void QNode::informStatus(int light, bool status)
+{
+    std_msgs::Int32 msg;
+    msg.data = (light & 65535) | ((int)status << 16);
+    chatter_publisher.publish(msg);
+
+    std::stringstream ss;
+    ss << "I sent: light " << light << " is " << status;
     log(Info, ss.str());
 }
 

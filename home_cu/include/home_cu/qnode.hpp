@@ -56,6 +56,7 @@ public:
 	QStringListModel* loggingModel() { return &logging_model; }
 	void log( const LogLevel &level, const std::string &msg);
     void switchLight(const std_msgs::Int32::ConstPtr& msg);
+    void informStatus(int light, bool status);
 
 Q_SIGNALS:
 	void loggingUpdated();

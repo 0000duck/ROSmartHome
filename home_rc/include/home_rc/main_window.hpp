@@ -53,6 +53,10 @@ public Q_SLOTS:
     ** Manual connections
     *******************************************/
     void updateLoggingView(); // no idea why this can't connect automatically
+    void on_button1_clicked(bool checked);
+    void on_button2_clicked(bool checked);
+    void on_button3_clicked(bool checked);
+    void on_buttonAll_clicked(bool checked);
 
 private:
 	Ui::MainWindowDesign ui;

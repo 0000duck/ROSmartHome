@@ -113,7 +113,39 @@ void MainWindow::on_checkbox_use_environment_stateChanged(int state) {
  * the user can always see the latest log message.
  */
 void MainWindow::updateLoggingView() {
-        ui.view_logging->scrollToBottom();
+    ui.view_logging->scrollToBottom();
+}
+
+void MainWindow::on_button1_clicked(bool checked)
+{
+    if(ui.button_connect->isEnabled()){
+        on_button_connect_clicked(false);
+    }
+    qnode.switchLight(1);
+}
+
+void MainWindow::on_button2_clicked(bool checked)
+{
+    if(ui.button_connect->isEnabled()){
+        on_button_connect_clicked(false);
+    }
+    qnode.switchLight(2);
+}
+
+void MainWindow::on_button3_clicked(bool checked)
+{
+    if(ui.button_connect->isEnabled()){
+        on_button_connect_clicked(false);
+    }
+    qnode.switchLight(3);
+}
+
+void MainWindow::on_buttonAll_clicked(bool checked)
+{
+    if(ui.button_connect->isEnabled()){
+        on_button_connect_clicked(false);
+    }
+    qnode.switchLight(-1);
 }
 
 /*****************************************************************************

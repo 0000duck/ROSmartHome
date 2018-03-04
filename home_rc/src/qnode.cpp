@@ -16,6 +16,7 @@
 #include <std_msgs/String.h>
 #include <sstream>
 #include "../include/home_rc/qnode.hpp"
+#include <std_msgs/Int32.h>
 
 /*****************************************************************************
 ** Namespaces
@@ -48,8 +49,8 @@ bool QNode::init() {
 	ros::start(); // explicitly needed since our nodehandle is going out of scope.
 	ros::NodeHandle n;
 	// Add your ros communications here.
-	chatter_publisher = n.advertise<std_msgs::String>("chatter", 1000);
-	start();
+    chatter_publisher = n.advertise<std_msgs::Int32>("lights", 1000);
+    //start();
 	return true;
 }
 
@@ -64,8 +65,8 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
 	ros::start(); // explicitly needed since our nodehandle is going out of scope.
 	ros::NodeHandle n;
 	// Add your ros communications here.
-	chatter_publisher = n.advertise<std_msgs::String>("chatter", 1000);
-	start();
+    chatter_publisher = n.advertise<std_msgs::Int32>("lights", 1000);
+    //start();
 	return true;
 }
 
@@ -121,7 +122,19 @@ void QNode::log( const LogLevel &level, const std::string &msg) {
 	}
 	QVariant new_row(QString(logging_model_msg.str().c_str()));
 	logging_model.setData(logging_model.index(logging_model.rowCount()-1),new_row);
-	Q_EMIT loggingUpdated(); // used to readjust the scrollbar
+    Q_EMIT loggingUpdated(); // used to readjust the scrollbar
+}
+
+void QNode::switchLight(int32_t l)
+{
+    std_msgs::Int32 msg;
+    msg.data = l;
+#include <std_msgs/Int32.h>
+    chatter_publisher.publish(msg);
+
+    std::stringstream ss;
+    ss << "I sent: switch light: " << msg.data;
+    log(Info, ss.str());
 }
 
 }  // namespace home_rc

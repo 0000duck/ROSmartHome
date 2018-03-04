@@ -42,6 +42,178 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
+         <widget class="QFrame" name="horizontalFrame">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>280</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>280</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QFrame" name="frame_2">
+             <property name="minimumSize">
+              <size>
+               <width>163</width>
+               <height>270</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>163</width>
+               <height>270</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QLabel" name="label_4">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>163</width>
+                <height>270</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="../resources/images.qrc">:/images/base_control.png</pixmap>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="button1">
+              <property name="geometry">
+               <rect>
+                <x>67</x>
+                <y>25</y>
+                <width>28</width>
+                <height>28</height>
+               </rect>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius: 5px;</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources/images.qrc">
+                <normaloff>:/images/button1.png</normaloff>:/images/button1.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>24</width>
+                <height>24</height>
+               </size>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="button2">
+              <property name="geometry">
+               <rect>
+                <x>41</x>
+                <y>65</y>
+                <width>28</width>
+                <height>28</height>
+               </rect>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius: 5px;</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources/images.qrc">
+                <normaloff>:/images/button2.png</normaloff>:/images/button2.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>24</width>
+                <height>24</height>
+               </size>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="button3">
+              <property name="geometry">
+               <rect>
+                <x>94</x>
+                <y>65</y>
+                <width>28</width>
+                <height>28</height>
+               </rect>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius: 5px;</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources/images.qrc">
+                <normaloff>:/images/button3.png</normaloff>:/images/button3.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>24</width>
+                <height>24</height>
+               </size>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="buttonAll">
+              <property name="geometry">
+               <rect>
+                <x>65</x>
+                <y>129</y>
+                <width>34</width>
+                <height>33</height>
+               </rect>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius: 5px;</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources/images.qrc">
+                <normaloff>:/images/button_all.png</normaloff>:/images/button_all.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>34</width>
+                <height>33</height>
+               </size>
+              </property>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
          <widget class="QGroupBox" name="groupBox_12">
           <property name="sizePolicy">
            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
@@ -71,7 +243,7 @@
      <x>0</x>
      <y>0</y>
      <width>944</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -98,7 +270,7 @@
    <property name="minimumSize">
     <size>
      <width>325</width>
-     <height>368</height>
+     <height>389</height>
     </size>
    </property>
    <property name="allowedAreas">

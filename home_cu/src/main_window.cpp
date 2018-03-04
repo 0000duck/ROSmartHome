@@ -50,6 +50,12 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     if ( ui.checkbox_remember_settings->isChecked() ) {
         on_button_connect_clicked(true);
     }
+
+    /*********************
+     ** Ligths Initialization
+    **********************/
+    memset(&lights_status, 0, 3 *sizeof(bool));
+    QObject::connect(&qnode, SIGNAL(switchLight(int)), this, SLOT(switchLight(int)));
 }
 
 MainWindow::~MainWindow() {}
@@ -113,7 +119,38 @@ void MainWindow::on_checkbox_use_environment_stateChanged(int state) {
  * the user can always see the latest log message.
  */
 void MainWindow::updateLoggingView() {
-        ui.view_logging->scrollToBottom();
+    ui.view_logging->scrollToBottom();
+}
+
+void MainWindow::switchLight(int light)
+{
+    switch(light){
+    case 1:
+        lights_status[1] = !lights_status[1];
+        switchLight(ui.light1, lights_status[1]);
+        break;
+    case 2:
+        lights_status[2] = !lights_status[2];
+        switchLight(ui.light2, lights_status[2]);
+        break;
+    case 3:
+        lights_status[3] = !lights_status[3];
+        switchLight(ui.light3, lights_status[3]);
+        break;
+    case -1:
+        lights_status[1] = true;
+        switchLight(ui.light1, lights_status[1]);
+        lights_status[2] = true;
+        switchLight(ui.light2, lights_status[2]);
+        lights_status[3] = true;
+        switchLight(ui.light3, lights_status[3]);
+        break;
+    }
+}
+
+void MainWindow::switchLight(QLabel *light, bool sw)
+{
+    light->setPixmap(QPixmap(sw?":/images/light_on.png":":/images/light_off.png"));
 }
 
 /*****************************************************************************

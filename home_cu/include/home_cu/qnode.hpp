@@ -20,6 +20,7 @@
 #include <string>
 #include <QThread>
 #include <QStringListModel>
+#include <std_msgs/Int32.h>
 
 
 /*****************************************************************************
@@ -54,16 +55,19 @@ public:
 
 	QStringListModel* loggingModel() { return &logging_model; }
 	void log( const LogLevel &level, const std::string &msg);
+    void switchLight(const std_msgs::Int32::ConstPtr& msg);
 
 Q_SIGNALS:
 	void loggingUpdated();
     void rosShutdown();
+    void switchLight(int light);
 
 private:
 	int init_argc;
 	char** init_argv;
 	ros::Publisher chatter_publisher;
     QStringListModel logging_model;
+    ros::Subscriber lights_subscriber;
 };
 
 }  // namespace home_cu

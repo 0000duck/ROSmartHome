@@ -53,10 +53,13 @@ public Q_SLOTS:
     ** Manual connections
     *******************************************/
     void updateLoggingView(); // no idea why this can't connect automatically
+    void switchLight(int light);
+    void switchLight(QLabel *light, bool sw);
 
 private:
 	Ui::MainWindowDesign ui;
 	QNode qnode;
+    bool lights_status[3];
 };
 
 }  // namespace home_cu

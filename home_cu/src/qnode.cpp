@@ -16,6 +16,7 @@
 #include <std_msgs/String.h>
 #include <sstream>
 #include "../include/home_cu/qnode.hpp"
+#include <std_msgs/Int32.h>
 
 /*****************************************************************************
 ** Namespaces
@@ -48,7 +49,7 @@ bool QNode::init() {
 	ros::start(); // explicitly needed since our nodehandle is going out of scope.
 	ros::NodeHandle n;
 	// Add your ros communications here.
-	chatter_publisher = n.advertise<std_msgs::String>("chatter", 1000);
+    lights_subscriber = n.subscribe<std_msgs::Int32>("lights", 1000, &QNode::switchLight, this);
 	start();
 	return true;
 }
@@ -64,28 +65,19 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
 	ros::start(); // explicitly needed since our nodehandle is going out of scope.
 	ros::NodeHandle n;
 	// Add your ros communications here.
-	chatter_publisher = n.advertise<std_msgs::String>("chatter", 1000);
+    lights_subscriber = n.subscribe<std_msgs::Int32>("lights", 1000, &QNode::switchLight, this);
 	start();
 	return true;
 }
 
 void QNode::run() {
-	ros::Rate loop_rate(1);
-	int count = 0;
-	while ( ros::ok() ) {
-
-		std_msgs::String msg;
-		std::stringstream ss;
-		ss << "hello world " << count;
-		msg.data = ss.str();
-		chatter_publisher.publish(msg);
-		log(Info,std::string("I sent: ")+msg.data);
-		ros::spinOnce();
-		loop_rate.sleep();
-		++count;
-	}
-	std::cout << "Ros shutdown, proceeding to close the gui." << std::endl;
-	Q_EMIT rosShutdown(); // used to signal the gui for a shutdown (useful to roslaunch)
+    ros::Rate loop_rate(1); // 1 hz = 1 loop by second.
+    while( ros::ok()) {
+        ros::spinOnce();    // check for message arrival
+        loop_rate.sleep();
+    }
+    std::cout << "Ros shutdown, proceeding to close the gui." << std::endl;
+    Q_EMIT rosShutdown(); // used to signal the gui for a shutdown (useful to roslaunch)
 }
 
 
@@ -121,7 +113,16 @@ void QNode::log( const LogLevel &level, const std::string &msg) {
 	}
 	QVariant new_row(QString(logging_model_msg.str().c_str()));
 	logging_model.setData(logging_model.index(logging_model.rowCount()-1),new_row);
-	Q_EMIT loggingUpdated(); // used to readjust the scrollbar
+    Q_EMIT loggingUpdated(); // used to readjust the scrollbar
+}
+
+void QNode::switchLight(const std_msgs::Int32::ConstPtr &msg)
+{
+    Q_EMIT switchLight((int)msg.get()->data);
+
+    std::stringstream ss;
+    ss << "I heard: switch light " << msg.get()->data;
+    log(Info, ss.str());
 }
 
 }  // namespace home_cu

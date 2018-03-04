@@ -42,6 +42,110 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
+         <widget class="QFrame" name="horizontalFrame">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>341</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>341</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QFrame" name="frame_2">
+             <property name="minimumSize">
+              <size>
+               <width>471</width>
+               <height>331</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>471</width>
+               <height>331</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QLabel" name="house">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>471</width>
+                <height>331</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="../resources/images.qrc">:/images/house.png</pixmap>
+              </property>
+             </widget>
+             <widget class="QLabel" name="light1">
+              <property name="geometry">
+               <rect>
+                <x>230</x>
+                <y>14</y>
+                <width>26</width>
+                <height>26</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="../resources/images.qrc">:/images/light_off.png</pixmap>
+              </property>
+             </widget>
+             <widget class="QLabel" name="light2">
+              <property name="geometry">
+               <rect>
+                <x>160</x>
+                <y>145</y>
+                <width>26</width>
+                <height>26</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="../resources/images.qrc">:/images/light_off.png</pixmap>
+              </property>
+             </widget>
+             <widget class="QLabel" name="light3">
+              <property name="geometry">
+               <rect>
+                <x>209</x>
+                <y>240</y>
+                <width>26</width>
+                <height>26</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="../resources/images.qrc">:/images/light_off.png</pixmap>
+              </property>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
          <widget class="QGroupBox" name="groupBox_12">
           <property name="sizePolicy">
            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
@@ -71,7 +175,7 @@
      <x>0</x>
      <y>0</y>
      <width>944</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -98,7 +202,7 @@
    <property name="minimumSize">
     <size>
      <width>325</width>
-     <height>368</height>
+     <height>389</height>
     </size>
    </property>
    <property name="allowedAreas">

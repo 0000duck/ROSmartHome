@@ -57,6 +57,7 @@ public Q_SLOTS:
     void on_button2_clicked(bool checked);
     void on_button3_clicked(bool checked);
     void on_buttonAll_clicked(bool checked);
+    void updateLight(int light, bool status);
 
 private:
 	Ui::MainWindowDesign ui;

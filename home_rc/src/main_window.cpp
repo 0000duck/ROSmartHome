@@ -50,6 +50,9 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     if ( ui.checkbox_remember_settings->isChecked() ) {
         on_button_connect_clicked(true);
     }
+
+    //Connect the updateLight signal
+    QObject::connect(&qnode, SIGNAL(updateLight(int,bool)), this, SLOT(updateLight(int,bool)));
 }
 
 MainWindow::~MainWindow() {}
@@ -146,6 +149,26 @@ void MainWindow::on_buttonAll_clicked(bool checked)
         on_button_connect_clicked(false);
     }
     qnode.switchLight(-1);
+}
+
+void MainWindow::updateLight(int light, bool status)
+{
+    switch(light){
+    case 1:
+        ui.light1->setPixmap(QPixmap(status?":/images/rc_light_on.png":":/images/rc_light_off.png"));
+        break;
+    case 2:
+        ui.light2->setPixmap(QPixmap(status?":/images/rc_light_on.png":":/images/rc_light_off.png"));
+        break;
+    case 3:
+        ui.light3->setPixmap(QPixmap(status?":/images/rc_light_on.png":":/images/rc_light_off.png"));
+        break;
+    case 65535:
+        ui.light1->setPixmap(QPixmap(status?":/images/rc_light_on.png":":/images/rc_light_off.png"));
+        ui.light2->setPixmap(QPixmap(status?":/images/rc_light_on.png":":/images/rc_light_off.png"));
+        ui.light3->setPixmap(QPixmap(status?":/images/rc_light_on.png":":/images/rc_light_off.png"));
+        break;
+    }
 }
 
 /*****************************************************************************
